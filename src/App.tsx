@@ -52,7 +52,7 @@ function App() {
   const feedOwl = (foodType: 'cookie' | 'apple' | 'cake') => {
     const containerWidth = window.innerWidth;
     const containerHeight = window.innerHeight;
-    
+
     const newFood: FoodItem = {
       id: Date.now().toString(),
       type: foodType,
@@ -60,17 +60,17 @@ function App() {
       y: Math.random() * 150 + 200,
       timestamp: Date.now()
     };
-    
+
     setFoodItems(prev => [...prev, newFood]);
-    
+
     setTimeout(() => {
       setOwlState(prev => ({ ...prev, isEating: true, lastFed: Date.now() }));
       setOwlHappiness(prev => Math.min(prev + 15, 100));
-      
+
       setTimeout(() => {
         setOwlState(prev => ({ ...prev, isEating: false, isShowingLove: true }));
         showLove();
-        
+
         setTimeout(() => {
           setOwlState(prev => ({ ...prev, isShowingLove: false }));
         }, 2000);
@@ -81,11 +81,11 @@ function App() {
   const makeOwlDance = () => {
     setOwlState(prev => ({ ...prev, isDancing: true }));
     setOwlHappiness(prev => Math.min(prev + 10, 100));
-    
+
     setTimeout(() => {
       setOwlState(prev => ({ ...prev, isDancing: false, isShowingLove: true }));
       showLove();
-      
+
       setTimeout(() => {
         setOwlState(prev => ({ ...prev, isShowingLove: false }));
       }, 2000);
@@ -95,7 +95,7 @@ function App() {
   const showLove = () => {
     const containerWidth = window.innerWidth;
     const containerHeight = window.innerHeight;
-    
+
     for (let i = 0; i < 5; i++) {
       setTimeout(() => {
         const heart = {
@@ -107,7 +107,7 @@ function App() {
         setHearts(prev => [...prev, heart]);
       }, i * 200);
     }
-    
+
     for (let i = 0; i < 8; i++) {
       setTimeout(() => {
         const sparkle = {
@@ -158,7 +158,7 @@ function App() {
         <div className="absolute bottom-8 left-4 sm:bottom-20 sm:left-20 w-2 h-2 sm:w-3 sm:h-3 bg-blue-200 rounded-full opacity-70 animate-pulse delay-500"></div>
         <div className="absolute top-16 left-1/3 w-1 h-1 sm:w-2 sm:h-2 bg-white rounded-full opacity-90 animate-pulse delay-700"></div>
         <div className="absolute top-32 right-1/4 w-1 h-1 sm:w-2 sm:h-2 bg-yellow-100 rounded-full opacity-75 animate-pulse delay-300"></div>
-        
+
         {/* Moon */}
         <div className="absolute top-[20%] right-1 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-full opacity-90 shadow-lg">
           <div className="absolute top-2 left-2 w-2 h-2 bg-yellow-300 rounded-full opacity-60"></div>
@@ -219,7 +219,7 @@ function App() {
         <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full p-2">
           <p className="text-white font-semibold mr-2 text-sm sm:text-base">Happiness Level</p>
           <div className="w-20 sm:w-48 h-2 sm:h-4 bg-white/30 rounded-full overflow-hidden">
-            <div 
+            <div
               className="h-full bg-gradient-to-r from-yellow-400 to-pink-400 transition-all duration-500 rounded-full"
               style={{ width: `${owlHappiness}%` }}
             ></div>
@@ -232,32 +232,32 @@ function App() {
         <div className={getOwlClasses()}>
           {/* Simple Beautiful White Owl - Clean Design */}
           <div className="relative scale-75 sm:scale-100">
-            
+
             {/* Main owl body - clean white design */}
             <div className="w-48 sm:w-64 h-56 sm:h-72 bg-gray-100 rounded-full relative shadow-2xl border-4 border-gray-400">
-              
+
               {/* Simple white body with subtle shading */}
               <div className="absolute inset-1 bg-gray-200 rounded-full"></div>
-              
+
               {/* Wings - simple and clean */}
               <div className={`absolute -left-10 sm:-left-8 top-12 sm:top-16 w-20 sm:w-28 h-36 sm:h-48 bg-gray-400 rounded-full transform rotate-12 shadow-lg transition-transform duration-300 ${owlState.isDancing ? 'animate-bounce' : ''}`}>
                 <div className="absolute inset-1 bg-gray-100 rounded-full"></div>
               </div>
-              
+
               <div className={`absolute -right-10 sm:-right-8 top-12 sm:top-16 w-20 sm:w-28 h-36 sm:h-48 bg-gray-400 rounded-full transform -rotate-12 shadow-lg transition-transform duration-300 ${owlState.isDancing ? 'animate-bounce delay-100' : ''}`}>
                 <div className="absolute inset-1 bg-gray-100 rounded-full"></div>
               </div>
-              
+
               {/* Head - large and prominent like emoji owl */}
               <div className="absolute -top-20 sm:-top-28 left-1/2 transform -translate-x-1/2 w-40 sm:w-52 h-36 sm:h-44 bg-gray-400 rounded-full shadow-xl">
-                
+
                 {/* Head shading */}
                 <div className="absolute inset-1 bg-gray-100 rounded-full"></div>
-                
+
                 {/* Ear tufts - small and cute */}
                 <div className="absolute -top-3 sm:-top-4 left-8 sm:left-10 w-3 sm:w-4 h-6 sm:h-8 bg-gray-400 rounded-full transform -rotate-20 shadow-md border border-gray-200"></div>
                 <div className="absolute -top-3 sm:-top-4 right-8 sm:right-10 w-3 sm:w-4 h-6 sm:h-8 bg-gray-400 rounded-full transform rotate-20 shadow-md border border-gray-200"></div>
-                
+
                 {/* Large beautiful eyes - the focal point */}
                 <div className="absolute top-8 sm:top-10 left-4 sm:left-8 w-16 sm:w-20 h-16 sm:h-20 bg-gray-400 rounded-full shadow-inner border-3 border-gray-200">
                   <div className={`absolute top-2 sm:top-3 left-2 sm:left-3 w-12 sm:w-14 h-12 sm:h-14 bg-gradient-to-br from-amber-400 via-yellow-500 to-orange-500 rounded-full transition-transform duration-200 ${owlState.isShowingLove ? 'scale-110' : ''}`}>
@@ -275,14 +275,14 @@ function App() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Prominent beak - clean and visible */}
                 <div className={`h-[20px] absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 transition-transform duration-200 ${owlState.isEating ? 'scale-125' : ''}`}>
                   <div className="relative w-[20px] h-[20px] border-t-[20px] border-r-[10px] border-l-[10px] border-t-orange-600 border-r-transparent border-l-transparent">
-                    
-                  </div>                  
+
+                  </div>
                 </div>
-                
+
                 {/* Blush when showing love */}
                 {owlState.isShowingLove && (
                   <>
@@ -291,7 +291,21 @@ function App() {
                   </>
                 )}
               </div>
-              
+
+              {!owlState.isEating && (
+                <div className="absolute bottom-12 sm:bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce-slow">
+                  <div className="bg-pink-300 rounded-t-full p-2 shadow-md">
+                    <Cake className="w-8 h-8 sm:w-10 sm:h-10 text-pink-600" />
+                  </div>
+                  <div className="bg-pink-400 w-12 sm:w-16 h-3 sm:h-4 rounded-b-md shadow-sm"></div>
+                  <div className="absolute -top-3 flex gap-1">
+                    <div className="w-1 h-3 bg-yellow-200 rounded-full shadow-sm"></div>
+                    <div className="w-1 h-3 bg-yellow-200 rounded-full shadow-sm"></div>
+                    <div className="w-1 h-3 bg-yellow-200 rounded-full shadow-sm"></div>
+                  </div>
+                </div>
+              )}
+
               {/* Simple feet */}
               <div className="absolute -bottom-6 sm:-bottom-8 left-10 sm:left-16 w-12 sm:w-16 h-10 sm:h-12 bg-orange-400 rounded-t-full shadow-lg border-2 border-orange-300">
                 <div className="absolute -bottom-3 left-2 w-2 h-6 bg-orange-500 rounded-full"></div>
@@ -366,7 +380,7 @@ function App() {
           <span className="hidden sm:inline">Feed Cookie</span>
           <span className="sm:hidden">Cookie</span>
         </button>
-        
+
         <button
           onClick={() => feedOwl('apple')}
           className="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-white font-bold py-2 sm:py-4 px-3 sm:px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center gap-1 sm:gap-3 text-xs sm:text-base"
@@ -375,7 +389,7 @@ function App() {
           <span className="hidden sm:inline">Feed Apple</span>
           <span className="sm:hidden">Apple</span>
         </button>
-        
+
         <button
           onClick={() => feedOwl('cake')}
           className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-bold py-2 sm:py-4 px-3 sm:px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center gap-1 sm:gap-3 text-xs sm:text-base"
@@ -384,7 +398,7 @@ function App() {
           <span className="hidden sm:inline">Feed Cake</span>
           <span className="sm:hidden">Cake</span>
         </button>
-        
+
         <button
           onClick={makeOwlDance}
           disabled={owlState.isDancing}
@@ -437,6 +451,18 @@ function App() {
             transform: translateY(-100px) scale(0.8);
           }
         }
+          @keyframes bounce-slow {
+            0%, 100% {
+              transform: translate(-50%, 0);
+            }
+            50% {
+              transform: translate(-50%, -10px);
+            }
+          }
+
+          .animate-bounce-slow {
+            animation: bounce-slow 3s ease-in-out infinite;
+          }
       `}</style>
     </div>
   );
